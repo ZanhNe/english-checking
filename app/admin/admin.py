@@ -11,8 +11,6 @@ from flask_paginate import get_page_args, Pagination, get_page_parameter
 class SecureModelView(AdminIndexView):
     def is_accessible(self):
         return current_user.is_authenticated and any(role.name == 'ADMIN' for role in current_user.roles)  # Bạn có thể kiểm tra quyền truy cập ở đây
-        # return False
-        # return True
 
     def inaccessible_callback(self, name, **kwargs):
         # redirect to login page if user doesn't have access
@@ -49,9 +47,8 @@ class AnswerView(MyModelView):
 class Listening(BaseView):
     @expose('/')
     def index(self):
-
+        
         page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
-        # page = page = request.args.get(get_page_parameter(), type=int, default=1)
         
         listenings_all = ListeningModel.query.all()
         listenings = ListeningModel.query.offset(offset=offset).limit(per_page).all()
@@ -75,6 +72,13 @@ class Listening(BaseView):
     @expose('/create')
     def create_page(self):
         return self.render('admin/admin_listening_create.html')
+    
+
+class QuestionListeningView(MyModelView):
+    column_list = ['id', 'text', 'question_type', 'listening', 'answers']
+
+class AnswerListeningView(MyModelView):
+    column_list = ['id', 'text', 'is_correct', 'question_listening']
 
 admin = Admin(name='EnglishS', template_mode='bootstrap4', index_view=SecureModelView())
 
@@ -85,3 +89,6 @@ admin.add_view(QuestionTypeView(QuestionType, db.session, category='Reading'))
 admin.add_view(QuestionView(Question, db.session, category='Reading'))
 admin.add_view(AnswerView(Answer, db.session, category='Reading'))
 admin.add_view(Listening(name='Listening', category='Listening'))
+
+admin.add_view(QuestionListeningView(QuestionListening, db.session, category='Listening'))
+admin.add_view(AnswerListeningView(AnswerListening, db.session, category='Listening'))

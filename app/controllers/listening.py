@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect
+from flask import Blueprint, request, render_template, redirect, session
 from flask_login import current_user
 from flask_security.decorators import auth_required, roles_accepted
 from app.extentions.extentions import eleven_client
@@ -11,7 +11,23 @@ listening_view = Blueprint('listening_view', __name__)
 
 @listening_view.route('/hoc-tieng-anh/listening')
 def get_listening_page():
-    return render_template('listening.html')
+    listenings = Listening.query.all()
+    return render_template('listening.html', listenings=listenings)
+
+@listening_view.route('/hoc-tieng-anh/listening/<int:listening_id>', methods=['GET'])
+@auth_required()
+def get_listening_lesson(listening_id):
+    listening = Listening.query.get(ident=listening_id)
+    print(listening)
+    submit_result = session.get('submit_result', None)
+    if not listening:
+        return redirect('page_not_found'), 404
+    return render_template('listening_lesson.html', listening=listening, submit_result=submit_result)
+
+
+@listening_view.route('/api/v1/listening/<int:listening_id>', methods=['POST'])
+def submit_listening(listening_id):
+    pass
 
 @listening_view.route('/admin/listening/create', methods=['POST'])
 # @roles_accepted('ADMIN')
@@ -46,6 +62,8 @@ def create_listening_lesson():
     except Exception as e:
         db.session.rollback()
         return redirect('/admin/listening')
+    
+    
 
         
 

@@ -46,9 +46,7 @@ CSS gốc của Flask-Admin #}
           <tr>
             <th>ID</th>
             <th>Tiêu đề</th>
-            <th>Thời lượng</th>
             <th>Số câu hỏi</th>
-            <th>Ngày tạo</th>
           </tr>
         </thead>
         <tbody>
@@ -56,9 +54,7 @@ CSS gốc của Flask-Admin #}
           <tr>
             <td>{{listening.id}}</td>
             <td>{{listening.title}}</td>
-            <td>2:15</td>
             <td>{{listening.questions.__len__()}}</td>
-            <td>XX/XX/XXXX</td>
           </tr>
           {% endfor %}
         </tbody>

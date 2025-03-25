@@ -1,0 +1,81 @@
+{% extends 'admin/master.html' %} {% block head_css %} {{ super() }} {# Giữ lại
+CSS gốc của Flask-Admin #}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='admin/css/admin_listening.css') }}"
+/>
+{% endblock %} {% block body %}
+
+<main>
+  <section id="listening-management">
+    <div id="add-listening">
+      <h3>Thêm bài Listening mới</h3>
+      <form
+        action="/admin/listening/create"
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        <div>
+          <label for="title">Tiêu đề:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+          <label for="audio-file">File audio:</label>
+          <input
+            type="file"
+            id="audio-file"
+            name="audio_file"
+            accept="audio/*"
+          />
+        </div>
+        <div>
+          <label for="transcript">Nội dung bản ghi:</label>
+          <textarea id="transcript" name="transcript" rows="8"></textarea>
+        </div>
+        <div>
+          <button type="submit">Thêm bài Listening</button>
+          <button type="reset">Xóa form</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="bulk-import">
+    <h2>Nhập Dữ Liệu Hàng Loạt</h2>
+    <div>
+      <h3>Nhập từ file CSV</h3>
+      <form
+        action="/admin/import/csv"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div>
+          <label for="import-type">Loại dữ liệu:</label>
+          <select id="import-type" name="import_type">
+            <option value="listening">Bài Listening</option>
+            <option value="questions">Câu hỏi</option>
+            <option value="answers">Câu trả lời</option>
+          </select>
+        </div>
+        <div>
+          <label for="csv-file">File CSV:</label>
+          <input type="file" id="csv-file" name="csv_file" accept=".csv" />
+        </div>
+        <div>
+          <button type="submit">Nhập dữ liệu</button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <h3>Mẫu file CSV</h3>
+      <p>Tải về mẫu file CSV cho:</p>
+      <ul>
+        <li><a href="#template-listening">Bài Listening</a></li>
+        <li><a href="#template-questions">Câu hỏi</a></li>
+        <li><a href="#template-answers">Câu trả lời</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký - Hệ thống học tiếng Anh online</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/register.css')}}"
+    />
+    <script
+      defer
+      src="{{url_for('static', filename='js/register.js')}}"
+    ></script>
+  </head>
+  <body>
+    <div class="register-container">
+      <header>
+        <h1>EnglishLearn Online</h1>
+        <p>Nền tảng học tiếng Anh hiệu quả</p>
+      </header>
+
+      <main>
+        <section class="register-form">
+          <h2>Đăng ký tài khoản</h2>
+          <form
+            class="form-container"
+            action="{{url_for('security.register')}}"
+            method="post"
+          >
+            {{ register_user_form.hidden_tag() }}
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Mật khẩu:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+
+            <div class="form-group">
+              <label for="confirm-password">Xác nhận mật khẩu:</label>
+              <input
+                type="password"
+                id="confirm-password"
+                name="password_confirm"
+                required
+              />
+            </div>
+
+            <div class="form-submit">
+              <button id="submit" type="submit">Đăng ký</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="login-option">
+          <p>
+            Đã có tài khoản?
+            <a href="{{url_for('security.login')}}">Đăng nhập ngay</a>
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 EnglishLearn Online. Tất cả quyền được bảo lưu.</p>
+      </footer>
+    </div>
+  </body>
+</html>

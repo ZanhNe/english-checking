@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh Sách Bài Đọc - Phần Mềm Học Tiếng Anh Online</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/reading.css')}}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Danh Sách Bài Đọc - Phần Mềm Học Tiếng Anh Online</h1>
+      <p>
+        Chọn một bài đọc bên dưới để bắt đầu luyện tập kỹ năng đọc tiếng Anh của
+        bạn
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Danh sách bài đọc</h2>
+        <ul>
+          {% if readings %} {% for reading in readings %}
+          <li>
+            <a href="/hoc-tieng-anh/reading/{{reading.id}}"
+              >{{reading.title}}</a
+            >
+            <!-- <p>
+              {{ reading.title }}
+            </p> -->
+          </li>
+          {% endfor %} {% else %}
+          <li>Hệ thống chưa có bài đọc nào, vui lòng quay lại sau</li>
+          {% endif %}
+        </ul>
+      </section>
+
+      <!-- <section>
+        <h2>Công cụ hỗ trợ đọc</h2>
+        <p>Các công cụ giúp bạn nâng cao hiệu quả khi đọc:</p>
+        <ul>
+          <li>
+            <a href="tools/dictionary.html">Từ điển tích hợp</a> - Tra từ ngay
+            trong bài đọc
+          </li>
+          <li>
+            <a href="tools/flashcards.html">Thẻ ghi nhớ</a> - Lưu từ vựng mới để
+            ôn tập
+          </li>
+          <li>
+            <a href="tools/pronunciation.html">Phát âm</a> - Nghe cách phát âm
+            của từ
+          </li>
+          <li>
+            <a href="tools/notes.html">Ghi chú</a> - Tạo ghi chú trong quá trình
+            đọc
+          </li>
+        </ul>
+      </section> -->
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Phần Mềm Học Tiếng Anh Online</p>
+      <p>
+        <a href="contact.html">Liên hệ</a> |
+        <a href="privacy.html">Chính sách bảo mật</a> |
+        <a href="terms.html">Điều khoản sử dụng</a>
+      </p>
+    </footer>
+  </body>
+</html>

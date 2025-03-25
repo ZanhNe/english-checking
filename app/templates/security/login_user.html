@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập - Hệ thống học tiếng Anh online</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/login.css')}}"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <header>
+        <h1>EnglishLearn Online</h1>
+        <p>Nền tảng học tiếng Anh hiệu quả</p>
+      </header>
+
+      <main>
+        <section class="login-form">
+          <h2>Đăng nhập</h2>
+          <form action="{{url_for('security.login')}}" method="post">
+            {{ login_user_form.hidden_tag() }}
+            <div class="form-group">
+              <label for="email">Nhập vào Email:</label>
+              <input type="text" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Mật khẩu:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+
+            <div class="form-options">
+              <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember" />
+                <label for="remember">Ghi nhớ đăng nhập</label>
+              </div>
+              <div class="forgot-password">
+                <a href="/forgot-password">Quên mật khẩu?</a>
+              </div>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit">Đăng nhập</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="login-options">
+          <p>Hoặc đăng nhập với:</p>
+          <div class="social-login">
+            <button class="google-btn">Google</button>
+            <button class="facebook-btn">Facebook</button>
+          </div>
+        </section>
+
+        <section class="register-option">
+          <p>
+            Chưa có tài khoản?
+            <a href="{{url_for('security.register')}}">Đăng ký ngay</a>
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 EnglishLearn Online. Tất cả quyền được bảo lưu.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Học Tiếng Anh Online - Trang Chủ</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/home.css')}}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">EnglishMaster</div>
+          <ul class="nav-links">
+            <li><a href="/trang-chu">Trang Chủ</a></li>
+            <li><a href="#">Tài Liệu</a></li>
+            <li><a href="#">Liên Hệ</a></li>
+            {% if current_user.is_authenticated %}
+            <li>Xin chào, {{current_user.email}}</li>
+            <li><a href="/dang-xuat">Đăng xuất</a></li>
+            {% else %}
+            <li><a href="/dang-nhap">Đăng Nhập</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Học Tiếng Anh Online</h1>
+      <p>
+        Nền tảng học tiếng Anh trực tuyến hiệu quả với phương pháp học toàn
+        diện, giúp bạn thành thạo tiếng Anh nhanh chóng
+      </p>
+      <a href="#" class="btn">Bắt Đầu Học Ngay</a>
+    </section>
+
+    <section class="intro container">
+      <h2>Chào Mừng Đến Với EnglishMaster</h2>
+      <p>
+        EnglishMaster là nền tảng học tiếng Anh trực tuyến hàng đầu, cung cấp
+        các khóa học chất lượng giúp người học phát triển toàn diện bốn kỹ năng:
+        Nghe, Nói, Đọc và Viết. Với phương pháp học tập hiện đại, kết hợp giữa
+        lý thuyết và thực hành, chúng tôi cam kết mang đến trải nghiệm học tập
+        hiệu quả và thú vị cho mọi đối tượng người học.
+      </p>
+      <p>
+        Đội ngũ giáo viên giàu kinh nghiệm, chương trình học được thiết kế theo
+        chuẩn quốc tế và hệ thống bài tập đa dạng sẽ giúp bạn tự tin sử dụng
+        tiếng Anh trong mọi tình huống giao tiếp.
+      </p>
+    </section>
+
+    <section class="skills">
+      <div class="container">
+        <div class="skills-heading">
+          <h2>Phát Triển Toàn Diện Các Kỹ Năng</h2>
+          <p>
+            Chúng tôi cung cấp các chương trình học chuyên biệt giúp bạn phát
+            triển từng kỹ năng tiếng Anh
+          </p>
+        </div>
+
+        <div class="skills-container">
+          <div class="skill-card">
+            <div class="skill-icon">👂</div>
+            <div class="skill-content">
+              <h3>Luyện Nghe</h3>
+              <p>
+                Phát triển khả năng nghe hiểu với các bài tập từ cơ bản đến nâng
+                cao
+              </p>
+              <a href="#" class="skill-btn">Xem Chi Tiết</a>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🗣️</div>
+            <div class="skill-content">
+              <h3>Luyện Nói</h3>
+              <p>
+                Rèn luyện phát âm và kỹ năng giao tiếp thông qua các bài học
+                tương tác
+              </p>
+              <a href="/hoc-tieng-anh/speaking" class="skill-btn"
+                >Xem Chi Tiết</a
+              >
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">📖</div>
+            <div class="skill-content">
+              <h3>Luyện Đọc</h3>
+              <p>Nâng cao khả năng đọc hiểu với đa dạng chủ đề và độ khó</p>
+              <a href="/hoc-tieng-anh/reading" class="skill-btn"
+                >Xem Chi Tiết</a
+              >
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">✍️</div>
+            <div class="skill-content">
+              <h3>Luyện Viết</h3>
+              <p>Học cách viết đúng ngữ pháp và phong phú từ vựng</p>
+              <a href="/hoc-tieng-anh/writing" class="skill-btn"
+                >Xem Chi Tiết</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3>Về EnglishMaster</h3>
+            <p>
+              EnglishMaster là nền tảng học tiếng Anh trực tuyến hàng đầu Việt
+              Nam với phương pháp học hiệu quả.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Kỹ Năng</h3>
+            <ul class="footer-links">
+              <li><a href="#">Luyện Nghe</a></li>
+              <li><a href="/hoc-tieng-anh/speaking">Luyện Nói</a></li>
+              <li><a href="/hoc-tieng-anh/reading">Luyện Đọc</a></li>
+              <li><a href="/hoc-tieng-anh/writing">Luyện Viết</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          &copy; 2025 EnglishMaster. Tất cả quyền được bảo lưu.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

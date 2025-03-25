@@ -1,0 +1,69 @@
+{% extends 'admin/master.html' %} {% block head_css %} {{ super() }} {# Giữ lại
+CSS gốc của Flask-Admin #}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='admin/css/admin_listening.css') }}"
+/>
+{% endblock %} {% block body %}
+
+<main>
+  <!-- Phần Tổng Quan -->
+  <section id="overview">
+    <h2>Tổng Quan</h2>
+    <div>
+      <h3>Thống kê</h3>
+      <ul>
+        <li>Tổng số bài Listening: <strong>{{ listenings_count }}</strong></li>
+        <li>
+          Tổng số loại câu hỏi cho Listening:
+          <strong>{{ questions_type_count }}</strong>
+        </li>
+        <li>
+          Tổng số câu hỏi cho Listening: <strong>{{ questions_count }}</strong>
+        </li>
+        {% if lastest_listening %}
+        <li>
+          Bài Listening mới nhất: <strong>{{ lastest_listening.title }}</strong>
+        </li>
+        {% else %}
+        <li>Chưa có bài Listening nào trong hệ thống</li>
+        {% endif %}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Quản lý Listening -->
+  <section id="listening-management">
+    <ul>
+      <li><a href="/admin/listening/">List</a></li>
+      <li><a href="/admin/listening/create">Create</a></li>
+    </ul>
+    <h2>Quản Lý Bài Listening</h2>
+    <div>
+      <h3>Danh sách bài Listening</h3>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tiêu đề</th>
+            <th>Thời lượng</th>
+            <th>Số câu hỏi</th>
+            <th>Ngày tạo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for listening in listenings %}
+          <tr>
+            <td>{{listening.id}}</td>
+            <td>{{listening.title}}</td>
+            <td>2:15</td>
+            <td>{{listening.questions.__len__()}}</td>
+            <td>XX/XX/XXXX</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+{{ pagination.links }} {% endblock %}

@@ -1,0 +1,10 @@
+# Folder
+venv/
+migrations/
+__pycache__/
+uploads/
+
+
+# File
+.env
+

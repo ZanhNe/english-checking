@@ -23,9 +23,7 @@ def page_not_found(e):
 
 if __name__ == '__main__': #Để khởi tạo chạy ứng dụng
     flask_app.run(port=5000) 
-    # with flask_app.app_context():
-    #     db.create_all()
-    #     print("Tạo DB thành công")
+
     
 
 

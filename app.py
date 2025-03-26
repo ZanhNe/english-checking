@@ -22,7 +22,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__': #Để khởi tạo chạy ứng dụng
-    flask_app.run(debug=True) 
+    flask_app.run(port=5000) 
     # with flask_app.app_context():
     #     db.create_all()
     #     print("Tạo DB thành công")

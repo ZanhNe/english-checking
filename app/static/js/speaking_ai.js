@@ -30,12 +30,15 @@ async function startRecording() {
       `;
       const form = new FormData();
       form.append("file", blob, "record.mp3");
-      fetch("http://127.0.0.1:5000/api/v1/speaking/ai/upload", {
-        method: "POST",
-        credentials: "include",
+      fetch(
+        "https://englishlearning.up.railway.app/api/v1/speaking/ai/upload",
+        {
+          method: "POST",
+          credentials: "include",
 
-        body: form,
-      })
+          body: form,
+        }
+      )
         .then((res) => res.json())
         .then((res) => {
           // console.log(res);

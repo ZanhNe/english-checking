@@ -19,8 +19,6 @@ def get_reading_lessson(reading_id):
         return redirect('page_not_found')
     return render_template('reading_lesson.html', reading=reading, submit_result=submit_result)
 
-# @reading_view.route('/hoc-tieng-anh/reading/<int:reading_id>', methods=['POST'])
-# def submit_reading_answer(reading_id):
 
 @reading_view.route('/api/v1/reading/answer-choose', methods=['POST'])
 def choose_answer():

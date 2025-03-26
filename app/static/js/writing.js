@@ -8,7 +8,7 @@ checkButton.addEventListener("click", function () {
   if (!writtingOutput.value.trim()) return;
   const text = writtingOutput.value;
   loader.style.display = "block";
-  fetch("http://localhost:5000/api/v1/agent/writing", {
+  fetch("https://englishlearning.up.railway.app/api/v1/agent/writing", {
     method: "POST",
     headers: {
       "Content-type": "application/json",

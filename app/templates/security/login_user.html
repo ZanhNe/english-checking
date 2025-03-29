@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
@@ -66,6 +66,71 @@
       <footer>
         <p>&copy; 2025 EnglishLearn Online. Tất cả quyền được bảo lưu.</p>
       </footer>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập - TeachingEnglish</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/login.css')}}"
+    />
+  </head>
+  <body>
+    <!-- Background Decorations -->
+    <div class="background-decoration circle1"></div>
+    <div class="background-decoration circle2"></div>
+    <div class="background-decoration circle3"></div>
+
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <h1>Teach<span>English</span></h1>
+    </a>
+
+    <!-- Login Container -->
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Đăng Nhập</h1>
+        <p>Hệ Thống Hỗ Trợ Giảng Viên Dạy Tiếng Anh</p>
+        <div class="login-decoration"></div>
+      </div>
+
+      <div class="login-form">
+        <form action="{{url_for('security.login')}}" method="post">
+          {{ login_user_form.hidden_tag() }}
+          <div class="form-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" id="username" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+
+          <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember" />
+            <label for="remember" style="margin-bottom: 0"
+              >Ghi nhớ đăng nhập</label
+            >
+          </div>
+
+          <button type="submit" class="submit-btn">Đăng Nhập</button>
+
+          <div class="forgot-password">
+            <a href="#">Quên mật khẩu?</a>
+          </div>
+
+          <div class="register-link">
+            <p>Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>

@@ -10,3 +10,6 @@ def base():
 def trang_chu():
     return render_template('home.html')
 
+@home_view.route('/test', methods=['GET'])
+def test():
+    return render_template('test.html')

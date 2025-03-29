@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, Response
 from flask_security.decorators import auth_required, roles_required, roles_accepted
-from app.extentions.extentions import chain_grammar
+from app.extentions.extentions import chain_grammar, chain_grammar_general
 import json
 writing_view = Blueprint('writing_view', __name__)
 
@@ -18,6 +18,14 @@ def agent_writing():
     json_data = request.get_json()
     text = json_data.get('text')
     response = chain_grammar.invoke({"sentence": text})
+    json_str = json.dumps(response, ensure_ascii=False)
+    return Response(json_str, mimetype='application/json')
+
+@writing_view.route('/api/v1/writing/general-check', methods=['POST'])
+def check_general_writing():
+    json_data = request.get_json()
+    text = json_data.get('text')
+    response = chain_grammar_general.invoke({"sentence": text})
     json_str = json.dumps(response, ensure_ascii=False)
     return Response(json_str, mimetype='application/json')
 

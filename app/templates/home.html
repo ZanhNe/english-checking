@@ -3,147 +3,114 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Học Tiếng Anh Online - Trang Chủ</title>
+    <title>TeachingEnglish - Hỗ Trợ Giảng Viên</title>
     <link
       rel="stylesheet"
       href="{{url_for('static', filename='css/home.css')}}"
     />
   </head>
   <body>
+    <!-- HEADER -->
     <header>
-      <div class="container">
-        <nav>
-          <div class="logo">EnglishMaster</div>
-          <ul class="nav-links">
-            <li><a href="/trang-chu">Trang Chủ</a></li>
-            <li><a href="#">Tài Liệu</a></li>
-            <li><a href="#">Liên Hệ</a></li>
+      <div class="header-container">
+        <div class="logo">
+          <h1>Teach<span>English</span></h1>
+        </div>
+        <div class="login-area">
+          <button class="login-btn" onclick="showLoginModal()">
             {% if current_user.is_authenticated %}
             <li>Xin chào, {{current_user.email}}</li>
             <li><a href="/dang-xuat">Đăng xuất</a></li>
             {% else %}
             <li><a href="/dang-nhap">Đăng Nhập</a></li>
             {% endif %}
-          </ul>
-        </nav>
+          </button>
+        </div>
       </div>
+      <div class="header-decoration float"></div>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-      <h1>Học Tiếng Anh Online</h1>
+      <h1>Hỗ Trợ Giảng Viên Dạy Tiếng Anh</h1>
       <p>
-        Nền tảng học tiếng Anh trực tuyến hiệu quả với phương pháp học toàn
-        diện, giúp bạn thành thạo tiếng Anh nhanh chóng
-      </p>
-      <a href="#" class="btn">Bắt Đầu Học Ngay</a>
-    </section>
-
-    <section class="intro container">
-      <h2>Chào Mừng Đến Với EnglishMaster</h2>
-      <p>
-        EnglishMaster là nền tảng học tiếng Anh trực tuyến hàng đầu, cung cấp
-        các khóa học chất lượng giúp người học phát triển toàn diện bốn kỹ năng:
-        Nghe, Nói, Đọc và Viết. Với phương pháp học tập hiện đại, kết hợp giữa
-        lý thuyết và thực hành, chúng tôi cam kết mang đến trải nghiệm học tập
-        hiệu quả và thú vị cho mọi đối tượng người học.
-      </p>
-      <p>
-        Đội ngũ giáo viên giàu kinh nghiệm, chương trình học được thiết kế theo
-        chuẩn quốc tế và hệ thống bài tập đa dạng sẽ giúp bạn tự tin sử dụng
-        tiếng Anh trong mọi tình huống giao tiếp.
+        Nền tảng hiện đại giúp giảng viên chấm bài nhanh chóng, chính xác với hệ
+        thống đáp án chuẩn cho cả 4 kỹ năng tiếng Anh.
       </p>
     </section>
 
-    <section class="skills">
-      <div class="container">
-        <div class="skills-heading">
-          <h2>Phát Triển Toàn Diện Các Kỹ Năng</h2>
-          <p>
-            Chúng tôi cung cấp các chương trình học chuyên biệt giúp bạn phát
-            triển từng kỹ năng tiếng Anh
-          </p>
-        </div>
-
-        <div class="skills-container">
-          <div class="skill-card">
-            <div class="skill-icon">👂</div>
-            <div class="skill-content">
-              <h3>Luyện Nghe</h3>
-              <p>
-                Phát triển khả năng nghe hiểu với các bài tập từ cơ bản đến nâng
-                cao
-              </p>
-              <a href="/hoc-tieng-anh/listening" class="skill-btn"
-                >Xem Chi Tiết</a
-              >
-            </div>
+    <!-- FEATURES SECTION -->
+    <section class="features">
+      <h2>Hỗ Trợ 4 Kỹ Năng</h2>
+      <div class="skills-container">
+        <!-- LISTENING -->
+        <div class="skill-card listening">
+          <div class="skill-icon">
+            <span>👂</span>
           </div>
-
-          <div class="skill-card">
-            <div class="skill-icon">🗣️</div>
-            <div class="skill-content">
-              <h3>Luyện Nói</h3>
-              <p>
-                Rèn luyện phát âm và kỹ năng giao tiếp thông qua các bài học
-                tương tác
-              </p>
-              <a href="/hoc-tieng-anh/speaking" class="skill-btn"
-                >Xem Chi Tiết</a
-              >
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon">📖</div>
-            <div class="skill-content">
-              <h3>Luyện Đọc</h3>
-              <p>Nâng cao khả năng đọc hiểu với đa dạng chủ đề và độ khó</p>
-              <a href="/hoc-tieng-anh/reading" class="skill-btn"
-                >Xem Chi Tiết</a
-              >
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon">✍️</div>
-            <div class="skill-content">
-              <h3>Luyện Viết</h3>
-              <p>Học cách viết đúng ngữ pháp và phong phú từ vựng</p>
-              <a href="/hoc-tieng-anh/writing" class="skill-btn"
-                >Xem Chi Tiết</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="container">
-        <div class="footer-container">
-          <div class="footer-column">
-            <h3>Về EnglishMaster</h3>
+          <div class="skill-content">
+            <h3>Nghe</h3>
             <p>
-              EnglishMaster là nền tảng học tiếng Anh trực tuyến hàng đầu Việt
-              Nam với phương pháp học hiệu quả.
+              Chấm bài nghe tự động với đáp án chuẩn. Hỗ trợ nhiều dạng bài tập:
+              điền từ, trắc nghiệm, đúng/sai.
             </p>
-          </div>
-
-          <div class="footer-column">
-            <h3>Kỹ Năng</h3>
-            <ul class="footer-links">
-              <li><a href="#">Luyện Nghe</a></li>
-              <li><a href="/hoc-tieng-anh/speaking">Luyện Nói</a></li>
-              <li><a href="/hoc-tieng-anh/reading">Luyện Đọc</a></li>
-              <li><a href="/hoc-tieng-anh/writing">Luyện Viết</a></li>
-            </ul>
+            <a href="/hoc-tieng-anh/listening" class="learn-more">Xem thêm →</a>
           </div>
         </div>
 
-        <div class="copyright">
-          &copy; 2025 EnglishMaster. Tất cả quyền được bảo lưu.
+        <!-- SPEAKING -->
+        <div class="skill-card speaking">
+          <div class="skill-icon">
+            <span>🗣️</span>
+          </div>
+          <div class="skill-content">
+            <h3>Nói</h3>
+            <p>
+              Đánh giá phát âm, ngữ điệu và độ trôi chảy. Cho điểm tự động theo
+              rubric và tiêu chí đánh giá.
+            </p>
+            <a href="#" class="learn-more">Xem thêm →</a>
+          </div>
+        </div>
+
+        <!-- READING -->
+        <div class="skill-card reading">
+          <div class="skill-icon">
+            <span>📚</span>
+          </div>
+          <div class="skill-content">
+            <h3>Đọc</h3>
+            <p>
+              Chấm bài đọc với thư viện đáp án đa dạng. Hỗ trợ phân tích lỗi và
+              đề xuất cải thiện cho học viên.
+            </p>
+            <a href="/hoc-tieng-anh/reading" class="learn-more">Xem thêm →</a>
+          </div>
+        </div>
+
+        <!-- WRITING -->
+        <div class="skill-card writing">
+          <div class="skill-icon">
+            <span>✍️</span>
+          </div>
+          <div class="skill-content">
+            <h3>Viết</h3>
+            <p>
+              Phân tích bài viết tự động. Đánh giá ngữ pháp, từ vựng, cấu trúc
+              và tính mạch lạc theo tiêu chuẩn quốc tế.
+            </p>
+            <a href="/hoc-tieng-anh/writing" class="learn-more">Xem thêm →</a>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 TeachEnglish - Hệ thống hỗ trợ giảng viên dạy tiếng Anh</p>
+      </div>
+      <div class="footer-decoration"></div>
     </footer>
   </body>
 </html>

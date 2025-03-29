@@ -3,80 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hệ thống Chấm lỗi Tiếng Anh - Kỹ năng Viết</title>
+    <title>Hệ Thống Chấm Lỗi Tiếng Anh - Kỹ Năng Viết</title>
     <link
       rel="stylesheet"
       href="{{url_for('static', filename='css/writing.css')}}"
     />
     <script
       defer
+      src="https://cdn.jsdelivr.net/npm/diff@7.0.0/dist/diff.min.js"
+    ></script>
+    <script
+      defer
       src="{{url_for('static', filename='js/writing.js')}}"
     ></script>
   </head>
   <body>
-    <header>
-      <h1>Luyện Tiếng Anh Online</h1>
-      <p>Nâng cao kỹ năng writing với các tính năng phân tích ngữ pháp</p>
-    </header>
+    <div class="wrapper">
+      <h1>Hỗ Trợ Phần Writing</h1>
 
-    <nav>
-      <a href="/trang-chu">Trang Chủ</a>
-      <a href="/hoc-tieng-anh/listening" style="background-color: #465e7a"
-        >Listening</a
-      >
-      <a href="/hoc-tieng-anh/reading">Reading</a>
-      <a href="/hoc-tieng-anh/speaking">Speaking</a>
-      <a href="hoc-tieng-anh/writing">Writing</a>
-    </nav>
-    <div class="container">
-      <section class="writing-section">
-        <div class="writing-prompt">
-          <h3 class="prompt-title">Phân tích ngữ pháp</h3>
-          <p>Nhập vào một câu tiếng anh để phân tích</p>
-        </div>
-
-        <textarea
-          id="writing-input"
-          placeholder="Viết câu của bạn ở đây..."
-        ></textarea>
-
-        <div class="controls">
-          <div class="word-count">
-            Số từ: <span id="word-counter">0</span>/200
-          </div>
-          <div class="button-group">
-            <button id="reset-button" class="button reset-button">
-              Làm mới
-            </button>
-            <button id="check-button" class="button">Kiểm tra lỗi</button>
-          </div>
-        </div>
-
-        <div class="loader" id="loader">
-          <div class="loader-spinner"></div>
-          <p>Đang phân tích bài viết...</p>
-        </div>
-      </section>
-
-      <section class="results-section" id="results-section">
-        <div class="results-header">
-          <h2>Kết quả đánh giá</h2>
-        </div>
-
-        <div class="feedback-section">
-          <h3 class="feedback-header">Nhận xét chi tiết</h3>
-
-          <!-- <div class="error-container" id="grammar-errors">
-            <h4 class="error-type">Lỗi ngữ pháp</h4>
-            <div id="grammar-errors-content"></div>
+      <main class="writing-container">
+        <section class="writing-section">
+          <div class="writing-prompt">
+            <h2>Phân Tích Ngữ Pháp</h2>
+            <p>Nhập vào một câu tiếng Anh để phân tích</p>
           </div>
 
-          <div class="improvement-section">
-            <h4 class="improvement-title">Câu sau khi chỉnh sửa</h4>
-            <div class="revised-text" id="revised-text"></div>
-          </div> -->
-        </div>
-      </section>
+          <div class="input-wrapper">
+            <textarea
+              id="writing-input"
+              placeholder="Viết câu của bạn ở đây..."
+            ></textarea>
+          </div>
+
+          <div class="control-panel">
+            <div class="button-group">
+              <button id="reset-button" class="btn btn-reset">Làm Mới</button>
+              <button id="check-button-general" class="btn btn-check">
+                Kiểm Tra Tổng Quát
+              </button>
+              <button id="check-button-detail" class="btn btn-check">
+                Kiểm Tra Chi Tiết
+              </button>
+            </div>
+          </div>
+
+          <div class="loader" id="loader">
+            <div class="loader-spinner"></div>
+            <p>Đang phân tích bài viết...</p>
+          </div>
+        </section>
+
+        <section class="results-section" id="results-section">
+          <div class="results-header">
+            <h2>Kết Quả Đánh Giá</h2>
+          </div>
+
+          <div class="feedback-section">
+            <h3>Nhận Xét Chi Tiết</h3>
+            <div id="feedback-content" class="feedback-content">
+              <!-- Kết quả phân tích sẽ hiển thị ở đây -->
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </body>
 </html>

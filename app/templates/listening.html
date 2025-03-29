@@ -2,48 +2,70 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kỹ năng nghe | EnglishOnline</title>
+    <title>Hỗ Trợ Listening</title>
     <link
       rel="stylesheet"
       href="{{url_for('static', filename='css/listening.css')}}"
     />
+    <script
+      defer
+      src="{{url_for('static', filename='js/listening.js')}}"
+    ></script>
   </head>
   <body>
-    <header>
-      <h1>Kỹ Năng Nghe Tiếng Anh</h1>
-      <p>
-        Cải thiện khả năng nghe hiểu tiếng Anh của bạn với các bài học chất
-        lượng cao
-      </p>
-    </header>
+    <h1>Hỗ Trợ Phần Listening</h1>
 
-    <nav>
-      <ul>
-        <li><a href="/trang-chu">Trang chủ</a></li>
-        <li><a href="/hoc-tieng-anh/listening">Kỹ năng Nghe</a></li>
-        <li><a href="/hoc-tieng-anh/reading">Kỹ năng Đọc</a></li>
-        <li><a href="/hoc-tieng-anh/speaking">Kỹ năng Nói</a></li>
-        <li><a href="/hoc-tieng-anh/writing">Kỹ năng Viết</a></li>
-        <li><a href="#contact">Liên hệ</a></li>
-      </ul>
-    </nav>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <div>
+        <h2>Tải Lên Tệp Âm Thanh</h2>
+        <input
+          required
+          type="file"
+          id="audio-upload"
+          name="audio-upload"
+          accept="audio/*"
+        />
+      </div>
 
-    <main>
-      <section>
-        <h2>Danh sách bài nghe</h2>
-        <ul>
-          {% if listenings %} {% for listening in listenings %}
-          <li>
-            <a href="/hoc-tieng-anh/listening/{{listening.id}}"
-              >{{listening.title}}</a
-            >
-          </li>
-          {% endfor %} {% else %}
-          <li>Hệ thống chưa có bài nghe nào, vui lòng quay lại sau</li>
-          {% endif %}
-        </ul>
-      </section>
-    </main>
+      <div>
+        <h2>Thông Tin Câu Hỏi</h2>
+        <textarea
+          required
+          id="questions"
+          name="questions"
+          rows="15"
+          cols="50"
+          placeholder="Nhập toàn bộ thông tin câu hỏi và các câu trả lời vào đây"
+        ></textarea>
+      </div>
+
+      <!-- <div>
+        <h2>Nội Dung Âm Thanh</h2>
+        <textarea
+          id="audio-transcript"
+          name="audio-transcript"
+          rows="10"
+          cols="50"
+          placeholder="Nhập bản ghi âm hoặc nội dung của đoạn âm thanh (nếu có)"
+        ></textarea>
+      </div> -->
+
+      <div>
+        <input id="button" type="submit" value="Xử Lý" />
+      </div>
+      <div>
+        <input id="button-reset" type="reset" value="Làm mới" />
+      </div>
+
+      <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p>Đang phân tích bài nghe...</p>
+      </div>
+
+      <div>
+        <h2>Kết Quả</h2>
+        <div id="result-box" name="result-box"></div>
+      </div>
+    </form>
   </body>
 </html>

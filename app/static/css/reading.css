@@ -1,237 +1,115 @@
-/* Reset CSS và thiết lập cơ bản */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
+  font-family: "Comic Sans MS", "Rounded Mplus 1c", sans-serif;
+  background-color: #f0f4f8;
   color: #333;
-  background-color: #f7f9fc;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-image: linear-gradient(to bottom, #ffffff, #e6f2ff);
 }
 
-/* Header styles */
-header {
-  background-color: #3a86ff;
-  color: white;
+h1 {
   text-align: center;
-  padding: 2.5rem 1rem;
+  color: #ff69b4;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+  border-bottom: 3px solid #ff69b4;
+  padding-bottom: 10px;
+  letter-spacing: 3px;
+}
+
+h2 {
+  color: #4169e1;
+  font-size: 1.5em;
+  border-left: 5px solid #ff69b4;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  margin-bottom: 1rem;
-  font-size: 2.2rem;
-  font-weight: 600;
-}
-
-header p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
-/* Main content */
-main {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-}
-
-section {
-  background-color: white;
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid #ff69b4;
   border-radius: 8px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff0f5;
+  transition: all 0.3s ease;
 }
 
-section h2 {
-  color: #2b4570;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid #e9ecef;
-  font-size: 1.6rem;
+textarea:focus {
+  outline: none;
+  border-color: #4169e1;
+  box-shadow: 0 0 8px rgba(65, 105, 225, 0.3);
 }
 
-/* Danh sách bài đọc */
-section ul {
-  list-style-type: none;
-}
-
-section ul li {
-  padding: 1.2rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  background-color: #f8f9fa;
-  border-left: 4px solid #3a86ff;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-section ul li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-section ul li a {
-  color: #3a86ff;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.5rem;
-  transition: color 0.2s;
-}
-
-section ul li a:hover {
-  color: #1d56ad;
-}
-
-section ul li p {
-  color: #666;
-  font-size: 0.95rem;
-  margin: 0;
-}
-
-/* Công cụ hỗ trợ */
-section:nth-of-type(2) ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-section:nth-of-type(2) ul li {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  border-left: none;
-  border-top: 4px solid #3a86ff;
-}
-
-section:nth-of-type(2) a {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-/* Footer */
-footer {
-  background-color: #2b4570;
+input[type="submit"],
+input[type="reset"] {
+  background-color: #ff69b4;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #4169e1;
+  transform: scale(1.05);
+}
+
+#result-box {
+  background-color: #e6e6fa;
+  border: 2px dashed #ff69b4;
+  min-height: 100px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.loader {
+  display: none;
   text-align: center;
-  padding: 2rem 1rem;
-  margin-top: 3rem;
+  margin: 20px 0;
 }
 
-footer p {
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
-
-footer a {
-  color: #a2d6f9;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  transition: color 0.2s;
-}
-
-footer a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  section {
-    padding: 1.5rem;
-  }
-
-  section ul li a {
-    font-size: 1.1rem;
-  }
-
-  section:nth-of-type(2) ul {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  header {
-    padding: 2rem 1rem;
-  }
-
-  header h1 {
-    font-size: 1.5rem;
-  }
-
-  main {
-    padding: 0 1rem;
-    margin: 1.5rem auto;
-  }
-
-  section {
-    padding: 1.2rem;
-  }
-
-  section ul li {
-    padding: 1rem;
-  }
-
-  section:nth-of-type(2) ul {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Hiệu ứng hover cho liên kết công cụ */
-section:nth-of-type(2) a:hover {
-  color: #1d56ad;
-}
-
-/* Tạo biểu tượng cho các công cụ */
-section:nth-of-type(2) li:nth-child(1)::before,
-section:nth-of-type(2) li:nth-child(2)::before,
-section:nth-of-type(2) li:nth-child(3)::before,
-section:nth-of-type(2) li:nth-child(4)::before {
-  content: "";
-  display: block;
+.loader-spinner {
   width: 50px;
   height: 50px;
-  margin: 0 auto 1rem;
-  background-color: #3a86ff;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
+  border: 3px solid rgba(255, 105, 180, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto 15px;
 }
 
-section:nth-of-type(2) li:nth-child(1)::before {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm0-10h2v8h-2z'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm0-10h2v8h-2z'/%3E%3C/svg%3E");
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-section:nth-of-type(2) li:nth-child(2)::before {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z'/%3E%3C/svg%3E");
+.error {
+  background-color: red;
+  color: white;
+  padding: 2px;
+  border-radius: 4px;
 }
 
-section:nth-of-type(2) li:nth-child(3)::before {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z'/%3E%3C/svg%3E");
-}
-
-section:nth-of-type(2) li:nth-child(4)::before {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 9V3.5L18.5 9H13zm-4 4.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 9V3.5L18.5 9H13zm-4 4.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z'/%3E%3C/svg%3E");
+::placeholder {
+  color: #ff69b4;
+  opacity: 0.7;
 }

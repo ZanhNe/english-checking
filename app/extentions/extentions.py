@@ -91,21 +91,6 @@ template_fix_reading = """
 """
 
 template_fix_grammar = """
-    Bạn là một chuyên gia dạy tiếng Anh, nhiệm vụ của bạn là giúp học viên trung bình/yếu cải thiện kỹ năng Writing. 
-    Bạn là một chuyên gia ngôn ngữ học chuyên phân tích ngữ pháp tiếng Anh. 
-    Nhiệm vụ của bạn là phân tích câu sau đây, chỉ ra tất cả các lỗi về ngữ pháp (bao gồm lỗi về thì, sự đồng nhất chủ ngữ – động từ, lỗi đại từ, v.v.) và đưa ra gợi ý sửa lỗi.
-    Điều quan trọng là phải thật chính xác, kĩ lưỡng, nếu như có sai thì chỉ ra sai, còn nếu như câu đưa vào là câu đúng thì trả ra là đúng, chứ không tự tiện cho rằng nó sai, như vậy sẽ không thể giúp người dùng học đúng
-    Chỉ ra lỗi sai ngữ pháp của câu, và trả ra kết quả dưới dạng JSON với các key như: 
-        'is_correct' để xác định rằng câu đưa vào là đúng hay sai,
-        'grammar_check_details' dùng để chỉ rõ từng lỗi sai, trong đó chứa danh sách các object với key như sau : 'keyword' chỉ ra các từ vựng bị sai, 'error' chỉ rõ lỗi sai cụ thể và có thể đề xuất thêm phần kiến thức liên quan đến lỗi, 'suggestion' đề xuất lại sửa lỗi chỗ bị sai, chứ không cần nguyên câu
-        'correct_sentence' dùng để chứa câu được sửa lỗi lại nếu như bị sai
-    Lưu ý: 'grammar_check_details' luôn là danh sách, trong đó mỗi object sẽ tương ứng với mỗi lỗi cụ thể
-    Không được phép tự tùy ý cho rằng câu đúng/sai mà không có kiểm chứng chính xác
-    Luôn trả ra một object JSON tổng quát như trên
-    Phân tích dựa trên {sentence}
-"""
-
-template_fix_grammar = """
 Bạn là một chuyên gia dạy tiếng Anh và là chuyên gia ngôn ngữ học, nhiệm vụ của bạn là giúp học viên trung bình/yếu cải thiện kỹ năng Writing.  
 Nhiệm vụ của bạn là phân tích kỹ lưỡng câu sau đây, chỉ ra tất cả các lỗi về ngữ pháp (bao gồm lỗi về thì, sự đồng nhất chủ ngữ – động từ, lỗi đại từ, lỗi giới từ, v.v.) và đưa ra gợi ý sửa lỗi cho từng lỗi cụ thể.  
 
@@ -162,21 +147,6 @@ OUTPUT:
 
 """
 
-# template_check_grammar_general = """
-#     Bạn là một chuyên gia dạy tiếng Anh, nhiệm vụ của bạn là giúp học viên khá/giỏi cải thiện kỹ năng Writing. 
-#     Cho một đoạn văn mà học viên đã viết, bạn cần:
-#     1. **Sửa lỗi**: Nếu một câu có lỗi lớn, hãy viết lại toàn bộ câu sao cho đúng ngữ pháp và tự nhiên nhất. Nếu câu chỉ có lỗi nhỏ, hãy giữ nguyên cấu trúc và sửa những lỗi cần thiết.
-#     2. **Giải thích lỗi**: Chỉ ra lỗi chính trong câu đã sửa, nhưng KHÔNG đi quá chi tiết vào từng lỗi nhỏ. Chỉ cần giải thích chung chung về loại lỗi mà người học mắc phải, như lỗi chia động từ, từ vựng hoặc cách dùng câu,...
-#     3. **Định dạng kết quả**:
-#     Kết quả trả ra một Object JSON với các key như sau:
-#         'is_correct' để xác định rằng câu đưa vào là đúng hay sai,
-#         'grammar_check_details' dùng để chứa danh sách lỗi chính của các câu bị sửa (tối đa 2-3 câu giải thích), trong đó mỗi object sẽ chứa key 'keyword' chỉ ra các từ bị sai (Vẫn phải liệt kê ra hết các từ bị lỗi, không bỏ sót), 'error' là lỗi sai, 'suggestion' đề xuất lại câu cần sửa
-#         'correct_sentence' dùng để viết lại toàn bộ đoạn văn với các câu được sửa
-#     Lưu ý:  -Vẫn phải sửa toàn bộ đoạn văn chứ không chỉ sửa vài lỗi rồi bỏ ngang, chỉ là hạn chế đi chi tiết từng lỗi quá mức, thay vì giảng giải chi tiết từng lỗi thì giải thích ra hết nguyên lỗi của 1 câu rồi sửa lại
-#             -Nhưng hãy giải thích theo cách hiểu của những người khá/giỏi 
-#     Phân tích dựa trên {sentence}
-
-# """
 
 template_check_grammar_general = """
 Bạn là một chuyên gia dạy tiếng Anh, nhiệm vụ của bạn là giúp học viên khá/giỏi cải thiện kỹ năng Writing. 

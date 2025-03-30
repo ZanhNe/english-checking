@@ -18,54 +18,96 @@
     ></script>
   </head>
   <body>
-    <div class="wrapper">
-      <h1>Hỗ Trợ Phần Writing</h1>
-
-      <main class="writing-container">
-        <section class="writing-section">
-          <div class="writing-prompt">
-            <h2>Phân Tích Ngữ Pháp</h2>
-            <p>Nhập vào một câu tiếng Anh để phân tích</p>
-          </div>
-
-          <div class="input-wrapper">
-            <textarea
-              id="writing-input"
-              placeholder="Viết câu của bạn ở đây..."
-            ></textarea>
-          </div>
-
-          <div class="control-panel">
-            <div class="button-group">
-              <button id="reset-button" class="btn btn-reset">Làm Mới</button>
-              <button id="check-button-general" class="btn btn-check">
-                Kiểm Tra Tổng Quát
-              </button>
-              <button id="check-button-detail" class="btn btn-check">
-                Kiểm Tra Chi Tiết
-              </button>
+    <!-- <nav class="skill-navigation">
+      <div class="nav-container">
+        <div class="skill-tabs">
+          <a href="/hoc-tieng-anh/listening" class="nav-item">Nghe</a>
+          <a href="/hoc-tieng-anh/speaking" class="nav-item">Nói</a>
+          <div class="dropdown">
+            <button class="nav-item dropdown-btn">
+              Đọc <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="/hoc-tieng-anh/reading">Nhập văn bản</a>
+              <a href="/hoc-tieng-anh/reading-uploads">Upload file</a>
             </div>
           </div>
-
-          <div class="loader" id="loader">
-            <div class="loader-spinner"></div>
-            <p>Đang phân tích bài viết...</p>
-          </div>
-        </section>
-
-        <section class="results-section" id="results-section">
-          <div class="results-header">
-            <h2>Kết Quả Đánh Giá</h2>
-          </div>
-
-          <div class="feedback-section">
-            <h3>Nhận Xét Chi Tiết</h3>
-            <div id="feedback-content" class="feedback-content">
-              <!-- Kết quả phân tích sẽ hiển thị ở đây -->
+          <a href="/hoc-tieng-anh/writing" class="active nav-item">Viết</a>
+        </div>
+      </div>
+    </nav> -->
+    <nav class="skill-navigation">
+      <div class="nav-container">
+        <div class="skill-tabs">
+          <div class="dropdown">
+            <button class="nav-item dropdown-btn">
+              Nghe <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="/hoc-tieng-anh/listening">Nhập văn bản</a>
+              <a href="/hoc-tieng-anh/listening-uploads">Upload file</a>
             </div>
           </div>
-        </section>
-      </main>
-    </div>
+          <a href="/hoc-tieng-anh/speaking" class="nav-item">Nói</a>
+          <div class="dropdown">
+            <button class="nav-item dropdown-btn">
+              Đọc <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="/hoc-tieng-anh/reading">Nhập văn bản</a>
+              <a href="/hoc-tieng-anh/reading-uploads">Upload file</a>
+            </div>
+          </div>
+          <a href="/hoc-tieng-anh/writing" class="active nav-item">Viết</a>
+        </div>
+      </div>
+    </nav>
+    <h1>Hỗ Trợ Phần Writing</h1>
+
+    <main class="writing-container">
+      <section class="writing-section">
+        <div class="writing-prompt">
+          <h2>Phân Tích Ngữ Pháp</h2>
+          <p>Nhập vào một câu tiếng Anh để phân tích</p>
+        </div>
+
+        <div class="input-wrapper">
+          <textarea
+            id="writing-input"
+            placeholder="Viết câu của bạn ở đây..."
+          ></textarea>
+        </div>
+
+        <div class="control-panel">
+          <div class="button-group">
+            <button id="reset-button" class="btn btn-reset">Làm Mới</button>
+            <button id="check-button-general" class="btn btn-check">
+              Kiểm Tra Tổng Quát
+            </button>
+            <button id="check-button-detail" class="btn btn-check">
+              Kiểm Tra Chi Tiết
+            </button>
+          </div>
+        </div>
+
+        <div class="loader" id="loader">
+          <div class="loader-spinner"></div>
+          <p>Đang phân tích bài viết...</p>
+        </div>
+      </section>
+
+      <section class="results-section" id="results-section">
+        <div class="results-header">
+          <h2>Kết Quả Đánh Giá</h2>
+        </div>
+
+        <div class="feedback-section">
+          <h3>Nhận Xét Chi Tiết</h3>
+          <div id="feedback-content" class="feedback-content">
+            <!-- Kết quả phân tích sẽ hiển thị ở đây -->
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

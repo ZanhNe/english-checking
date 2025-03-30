@@ -116,118 +116,130 @@ input[type="reset"]:hover {
   opacity: 0.7;
 }
 
-/* body {
-  font-family: "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
-    ),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><pattern id="sakura" patternUnits="userSpaceOnUse" width="100" height="100"><path d="M50 25C50 11.19 61.19 0 75 0C88.81 0 100 11.19 100 25C100 38.81 88.81 50 75 50C61.19 50 50 38.81 50 25Z" fill="%23FFB6C1"/></pattern><rect width="100%" height="100%" fill="url(%23sakura)"/></svg>');
-  background-repeat: repeat;
-}
-
-h1 {
-  text-align: center;
-  color: #8b4513;
-  font-size: 2.5em;
-  font-family: "Shippori Mincho", serif;
-  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.2);
-  border-bottom: 3px double #8b4513;
-  padding-bottom: 10px;
-  letter-spacing: 5px;
-}
-
-h2 {
-  color: #2f4f4f;
-  font-size: 1.5em;
-  font-family: "Shippori Mincho", serif;
-  border-left: 8px solid #dc143c;
-  padding-left: 15px;
-  margin-top: 20px;
-}
-
-form {
-  background-color: rgba(255, 250, 240, 0.9);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #d3d3d3;
-}
-
-textarea,
-input[type="file"] {
+/* Thêm đoạn code này vào file CSS của bạn */
+.skill-navigation {
   width: 100%;
+  margin-bottom: 25px;
+  animation: fadeIn 0.5s ease;
+}
+
+.nav-container {
+  background-color: white;
+  border-radius: 25px;
   padding: 10px;
-  margin-top: 10px;
-  border: 2px solid #8b4513;
-  border-radius: 8px;
-  background-color: #fff8dc;
-  font-family: "Yu Gothic", sans-serif;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+  border: 2px solid #ff69b4;
 }
 
-textarea:focus,
-input[type="file"]:focus {
-  outline: none;
-  border-color: #dc143c;
-  box-shadow: 0 0 8px rgba(220, 20, 60, 0.3);
+.skill-tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-input[type="submit"],
-input[type="reset"] {
-  background-color: #dc143c;
-  color: white;
-  border: none;
+.nav-item {
   padding: 10px 20px;
-  margin: 10px 0;
-  border-radius: 20px;
-  cursor: pointer;
+  margin: 0 5px;
+  color: #4169e1;
+  text-decoration: none;
   font-weight: bold;
-  font-family: "Yu Gothic", sans-serif;
+  border-radius: 20px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff0f5;
+  border: 2px solid transparent;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-  background-color: #8b4513;
+.nav-item:hover {
+  background-color: #ffdbef;
   transform: scale(1.05);
 }
 
-#result-box {
-  background-color: #fff0f5;
-  border: 2px dashed #dc143c;
-  min-height: 100px;
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 10px;
+.nav-item.active {
+  background-color: #ff69b4;
+  color: white;
 }
 
-::placeholder {
-  color: #8b4513;
-  opacity: 0.7;
-  font-family: "Yu Gothic", sans-serif;
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-/* Subtle Japanese paper-like texture */
-/* body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.3)
-    ),
-    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmeBehD3mI8Wdy1Yqt2sqwEqpHXgOqEuqWB2cKFcyWillsq6Gpp6O76kqaXqMEhbhA98Xk3PYrCqJzqvqDJuFmjDjMo1kxr1PzxMldhu7UujUdurtQfcNXTLo+VTVdC7oJC1yUcqGEjc8/9zzp/3y8BPX/u9sfDRl/wG7fBQOIN1kAAAAASUVORK5CYII=");
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: -1;
-} */
+.dropdown-btn {
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.dropdown-arrow {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  z-index: 1;
+  border: 2px solid #ff69b4;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #4169e1;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffdbef;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: dropdown 0.3s ease-out;
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .skill-tabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dropdown-content {
+    position: relative;
+    width: 100%;
+  }
+}

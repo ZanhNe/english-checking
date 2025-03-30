@@ -31,22 +31,96 @@ form {
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 2px solid #ff69b4;
-  border-radius: 8px;
+#file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed #ff69b4;
+  border-radius: 15px;
+  padding: 30px;
   background-color: #fff0f5;
+  margin: 20px 0;
   transition: all 0.3s ease;
 }
 
-textarea:focus {
-  outline: none;
+#file-upload-container:hover {
+  background-color: #ffe6f2;
   border-color: #4169e1;
-  box-shadow: 0 0 8px rgba(65, 105, 225, 0.3);
+}
+
+#file-upload-container.highlight {
+  background-color: #e6f2ff;
+  border-color: #4169e1;
+}
+
+#file-upload-icon {
+  font-size: 48px;
+  color: #ff69b4;
+  margin-bottom: 15px;
+}
+
+#file-upload {
+  display: block;
+}
+
+#file-upload-label {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+#file-upload-label:hover {
+  background-color: #4169e1;
+  transform: scale(1.05);
+}
+
+#file-info {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+}
+
+#selected-file {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #4169e1;
+}
+
+.format-info {
+  background-color: #e6e6fa;
+  border: 2px solid #4169e1;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.format-info h3 {
+  color: #ff69b4;
+  margin-top: 0;
+}
+
+.format-example {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: monospace;
+  white-space: pre-wrap;
 }
 
 input[type="submit"],
@@ -55,7 +129,7 @@ input[type="reset"] {
   color: white;
   border: none;
   padding: 10px 20px;
-  margin: 10px 0;
+  margin: 10px 5px;
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
@@ -66,6 +140,13 @@ input[type="submit"]:hover,
 input[type="reset"]:hover {
   background-color: #4169e1;
   transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 #result-box {
@@ -88,7 +169,7 @@ input[type="reset"]:hover {
   height: 50px;
   border: 3px solid rgba(255, 105, 180, 0.3);
   border-radius: 50%;
-  border-top-color: var(--primary-color);
+  border-top-color: #ff69b4;
   animation: spin 1s ease-in-out infinite;
   margin: 0 auto 15px;
 }
@@ -103,15 +184,29 @@ input[type="reset"]:hover {
 }
 
 .error {
-  background-color: red;
-  color: white;
-  padding: 2px;
-  border-radius: 4px;
+  background-color: #ffdddd;
+  color: #ff0000;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 5px solid #ff0000;
+  margin: 10px 0;
 }
 
-::placeholder {
-  color: #ff69b4;
-  opacity: 0.7;
+.success {
+  background-color: #ddffdd;
+  color: #00aa00;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 5px solid #00aa00;
+  margin: 10px 0;
+}
+
+.kawaii-character {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  z-index: 1000;
 }
 
 /* Thêm đoạn code này vào file CSS của bạn */

@@ -27,7 +27,7 @@ def speaking_ai():
     
     file = request.files['file']
     transcription = eleven_client.speech_to_text.convert(file=file, language_code='en', model_id='scribe_v1')
-
+    
 
     response = chain_speaking.invoke({'sentence_speaking': transcription.text}, config={'configurable': {'session_id': current_user.fs_uniquifier}})
     return jsonify(result={'user': transcription.text, 'ai': response.content}), 200

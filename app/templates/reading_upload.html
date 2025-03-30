@@ -2,14 +2,14 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Hỗ Trợ Reading</title>
+    <title>Hỗ Trợ Reading - File Upload</title>
     <link
       rel="stylesheet"
-      href="{{url_for('static', filename='css/reading.css')}}"
+      href="{{url_for('static', filename='css/reading_upload.css')}}"
     />
     <script
       defer
-      src="{{url_for('static', filename='js/reading.js')}}"
+      src="{{url_for('static', filename='js/reading_upload.js')}}"
     ></script>
   </head>
   <body>
@@ -59,33 +59,40 @@
     </nav>
     <h1>Hỗ Trợ Phần Reading</h1>
 
-    <form>
-      <div>
-        <h2>Nhập Đoạn Văn</h2>
-        <textarea
-          id="passage"
-          name="passage"
-          rows="10"
-          cols="50"
-          placeholder="Nhập toàn bộ đoạn văn vào đây"
-        ></textarea>
+    <div class="format-info">
+      <h3>📌 Định dạng file</h3>
+      <p>File cần tuân theo định dạng sau để hệ thống phân tích được:</p>
+      <ul>
+        <li>Bắt đầu với từ khóa <strong>Passage</strong></li>
+        <li>Tiếp theo là nội dung đoạn văn</li>
+        <li>Sau đó là từ khóa <strong>Question</strong></li>
+        <li>Cuối cùng là phần câu hỏi và các câu trả lời</li>
+      </ul>
+      <div class="format-example">
+        Passage <br />
+        This is an example passage text... <br />
+        Question<br />
+        1. What is the main idea? A... B... C...
+      </div>
+    </div>
+
+    <form id="upload-form">
+      <div id="file-upload-container">
+        <div id="file-upload-icon">📄</div>
+        <input
+          required
+          name="file"
+          type="file"
+          id="file-upload"
+          accept=".docx,.pdf"
+        />
+
+        <div id="file-info">Hỗ trợ định dạng: .docx, .pdf</div>
+        <div id="selected-file"></div>
       </div>
 
-      <div>
-        <h2>Thông Tin Câu Hỏi</h2>
-        <textarea
-          id="questions"
-          name="questions"
-          rows="15"
-          cols="50"
-          placeholder="Nhập toàn bộ thông tin câu hỏi và các câu trả lời vào đây"
-        ></textarea>
-      </div>
-
-      <div>
+      <div class="button-container">
         <input id="button" type="submit" value="Xử Lý" />
-      </div>
-      <div>
         <input id="button-reset" type="reset" value="Làm mới" />
       </div>
 
@@ -96,7 +103,7 @@
 
       <div>
         <h2>Kết Quả</h2>
-        <div id="result-box" name="result-box"></div>
+        <div id="result-box"></div>
       </div>
     </form>
   </body>

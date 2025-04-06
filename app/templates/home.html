@@ -18,12 +18,7 @@
         </div>
         <div class="login-area">
           <button class="login-btn" onclick="showLoginModal()">
-            {% if current_user.is_authenticated %}
-            <li>Xin chào, {{current_user.email}}</li>
-            <li><a href="/dang-xuat">Đăng xuất</a></li>
-            {% else %}
             <li><a href="/dang-nhap">Đăng Nhập</a></li>
-            {% endif %}
           </button>
         </div>
       </div>

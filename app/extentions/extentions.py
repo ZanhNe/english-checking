@@ -7,8 +7,8 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory, InMemoryChatMessageHistory
 from pydantic import BaseModel, Field
 from flask_mail import Mail
-from flask_security import Security, SQLAlchemyUserDatastore
-from app.models.models import db, User, Role
+# from flask_security import Security, SQLAlchemyUserDatastore
+# from app.models.models import db, User, Role
 from flask_migrate import Migrate
 from elevenlabs.client import ElevenLabs
 from dotenv import load_dotenv
@@ -29,10 +29,10 @@ sapling_api = "LQ0K5L3Q6WPEQ4ICJ3NWEOASFVGFV25I"
 
 mail = Mail()
 
-user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-security = Security(datastore=user_datastore)
+# user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+# security = Security(datastore=user_datastore)
 
-migrate = Migrate(db=db)
+# migrate = Migrate(db=db)
 
 eleven_client = ElevenLabs(api_key=os.getenv('ELEVENLAB_API_KEY'))
 

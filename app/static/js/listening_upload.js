@@ -7,9 +7,9 @@ const form = document.querySelector("form");
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const formData = new FormData(form);
-  if (!formData.get("file")) return;
+  if (!formData.get("file") || !formData.get("audio-upload")) return;
   loader.style.display = "block";
-  fetch("http://127.0.0.1:5000/api/v1/reading/uploads", {
+  fetch("http://127.0.0.1:5000/api/v1/listening/uploads", {
     method: "POST",
     body: formData,
   })
@@ -23,9 +23,7 @@ submitBtn.addEventListener("click", (e) => {
               <p><b>Explanation</b>: ${result.explanation
                 .replace(/\n/g, "<br>")
                 .replace(`'`, "<mark>")
-                .replace(`'`, "</mark>")
-                .replace('"', "<mark>")
-                .replace('"', "</mark>")}</p>
+                .replace(`'`, "</mark>")}</p>
               <br />
               `;
         loader.style.display = "none";

@@ -7,8 +7,6 @@ from pypdf import PdfReader
 reading_view = Blueprint('reading_view', __name__)
 
 @reading_view.route('/hoc-tieng-anh/reading')
-@roles_required('USER')
-@auth_required()
 def get_reading_page():
     return render_template('reading.html')
 

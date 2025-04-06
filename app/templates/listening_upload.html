@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hỗ Trợ Listening</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/listening_upload.css')}}"
+    />
+    <script
+      defer
+      src="{{url_for('static', filename='js/listening_upload.js')}}"
+    ></script>
+  </head>
+  <body>
+    <nav class="skill-navigation">
+      <div class="nav-container">
+        <div class="skill-tabs">
+          <div class="dropdown">
+            <button class="nav-item active dropdown-btn">
+              Nghe <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="/hoc-tieng-anh/listening">Nhập văn bản</a>
+              <a href="/hoc-tieng-anh/listening-uploads">Upload file</a>
+            </div>
+          </div>
+          <a href="/hoc-tieng-anh/speaking" class="nav-item">Nói</a>
+          <div class="dropdown">
+            <button class="nav-item dropdown-btn">
+              Đọc <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="/hoc-tieng-anh/reading">Nhập văn bản</a>
+              <a href="/hoc-tieng-anh/reading-uploads">Upload file</a>
+            </div>
+          </div>
+          <a href="/hoc-tieng-anh/writing" class="nav-item">Viết</a>
+        </div>
+      </div>
+    </nav>
+    <h1>Hỗ Trợ Phần Listening</h1>
+    <div class="format-info">
+      <h3>📌 Định dạng file</h3>
+      <p>File cần tuân theo định dạng sau để hệ thống phân tích được:</p>
+      <ul>
+        <li>Bắt đầu là từ khóa <strong>Question</strong></li>
+        <li>Sau đó là phần câu hỏi và các câu trả lời</li>
+      </ul>
+      <div class="format-example">
+        Question<br />
+        1. What is the main idea? A... B... C...
+      </div>
+    </div>
+
+    <form id="upload-form">
+      <div>
+        <h2>Tải Lên Tệp Âm Thanh</h2>
+        <input
+          required
+          type="file"
+          id="audio-upload"
+          name="audio-upload"
+          accept="audio/*"
+        />
+      </div>
+      <div id="file-upload-container">
+        <div id="file-upload-icon">📄</div>
+        <input
+          required
+          name="file"
+          type="file"
+          id="file-upload"
+          accept=".docx,.pdf"
+        />
+
+        <div id="file-info">Hỗ trợ định dạng: .docx, .pdf</div>
+        <div id="selected-file"></div>
+      </div>
+
+      <div class="button-container">
+        <input id="button" type="submit" value="Xử Lý" />
+        <input id="button-reset" type="reset" value="Làm mới" />
+      </div>
+
+      <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p>Đang phân tích bài nghe...</p>
+      </div>
+
+      <div>
+        <h2>Kết Quả</h2>
+        <div id="result-box"></div>
+      </div>
+    </form>
+  </body>
+</html>

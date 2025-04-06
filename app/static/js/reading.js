@@ -35,8 +35,10 @@ submitBtn.addEventListener("click", (e) => {
             <p><b>Explanation</b>: ${result.explanation
               .replace(/\n/g, "<br>")
               .replace(`'`, "<mark>")
-              .replace(`'`, "</mark>")}</p>
-            <br />
+              .replace(`'`, "</mark>")
+              .replace('"', "<mark>")
+              .replace('"', "</mark>")}</p>
+            <p><b>Segment</b>: ${result.segments}</p>
             `;
         loader.style.display = "none";
       });

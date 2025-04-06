@@ -9,7 +9,3 @@ def base():
 @home_view.route('/trang-chu', methods=['GET'])
 def trang_chu():
     return render_template('home.html')
-
-@home_view.route('/test', methods=['GET'])
-def test():
-    return render_template('test.html')

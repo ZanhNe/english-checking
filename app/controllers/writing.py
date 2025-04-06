@@ -7,8 +7,6 @@ writing_view = Blueprint('writing_view', __name__)
 
 
 @writing_view.route('/hoc-tieng-anh/writing', methods=['GET'])
-@roles_accepted('USER')
-@auth_required()
 def get_writing_page():
     return render_template('writing.html')
 

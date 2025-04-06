@@ -9,7 +9,7 @@ submitBtn.addEventListener("click", (e) => {
   const formData = new FormData(form);
   if (!formData.get("file") || !formData.get("audio-upload")) return;
   loader.style.display = "block";
-  fetch("http://127.0.0.1:5000/api/v1/listening/uploads", {
+  fetch("https://english.up.railway.app/api/v1/listening/uploads", {
     method: "POST",
     body: formData,
   })

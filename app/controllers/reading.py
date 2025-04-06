@@ -21,6 +21,7 @@ def check():
     questions = json_data.get('questions')
 
     respond = chain_reading.invoke(input={'Passage': passage, 'Questions': questions})
+    print(respond)
     return jsonify(result=respond)
 
 @reading_view.route('/api/v1/reading/uploads', methods=['POST'])

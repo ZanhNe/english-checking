@@ -40,7 +40,9 @@ eleven_client = ElevenLabs(api_key=os.getenv('ELEVENLAB_API_KEY'))
 cors = CORS(resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
 
-llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-thinking-exp-01-21', temperature=0, api_key=os.getenv('GEMINI_API_KEY'))
+llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', temperature=0, api_key=os.getenv('GEMINI_API_KEY'))
+
+# gemini-2.0-flash-exp-image-generation
 
 # template_fix_reading = """
 #     You are an advanced AI specialized in linguistic analysis and reading comprehension. Your task is to analyze the following passage carefully, extract key details, and generate precise answers to comprehension questions. Be meticulous in ensuring accuracy, logical reasoning, and textual alignment when providing responses.
@@ -99,7 +101,7 @@ Questions: {Questions}
 Expected Answer Format: Returns the answer as a JSON object with keys such as:
 - "question": the question text,
 - "answer": the answer (e.g., A, B, C, D; True/False; a sentence; or a word for fill-in-the-blank),
-- "explanation": a short explanation of how the answer was derived from the passage, (Attach evidence in parentheses " ")
+- "explanation": a short explanation of how the answer was derived from the passage, A short explanation of how the answer was derived from the passage, including direct evidence. All evidence must be clearly enclosed in double quotes (\" \")
 - "segments": the specific paragraph(s) or segment(s) (e.g., "Paragraph 2", "Paragraph 2 - Sentence 3") from which the evidence was extracted.
     for example: "1 He goes to school.
                   2 She goes to school. He goes to school by car. And he is handsome --> If evidence is "And he is handsome" then segment is "Paragraph 2 - Segment 3" because sentence "And he is handsome" is a sub-paragraph / segment at index 3 of Paragraph 2
@@ -107,11 +109,16 @@ Expected Answer Format: Returns the answer as a JSON object with keys such as:
   
 
   Output Instructions:
+  1. The final output must be a JSON array of objects, with each object corresponding to one question. The number of objects MUST equal the number of questions provided below.
+  2. Ensure that your answers are correct and that your explanations contain explicit, clearly marked evidence from the passage.
+  3. Do not skip any question or merge multiple questions into one object. The output must include exactly [number of questions] objects in the array.
 - Comprehensive Analysis: Break down the passage into key themes, main ideas, and supporting details.
 - Evidence-based Answering: Each answer must be strictly based on the passage. Do not rely on external knowledge.
 - Explain Your Reasoning: For each answer, provide a short explanation of how the answer was derived from the passage.
 - Specify: Including explicit references to both the paragraph number and the sub-paragraph/segment number (e.g., "(Paragraph 2 - Segment 3)") that support your answer.
 - Accuracy & Clarity: Ensure the answer is concise, unambiguous, and aligned with the question format.
+- Do not skip any question, and do not merge multiple questions into one object.
+
 
 
 

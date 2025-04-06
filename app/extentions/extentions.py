@@ -40,7 +40,7 @@ eleven_client = ElevenLabs(api_key=os.getenv('ELEVENLAB_API_KEY'))
 cors = CORS(resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
 
-llm = ChatGoogleGenerativeAI(model='gemini-2.5-pro-exp-03-25', temperature=0, api_key=os.getenv('GEMINI_API_KEY'))
+llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-thinking-exp-01-21', temperature=0, api_key=os.getenv('GEMINI_API_KEY'))
 
 # template_fix_reading = """
 #     You are an advanced AI specialized in linguistic analysis and reading comprehension. Your task is to analyze the following passage carefully, extract key details, and generate precise answers to comprehension questions. Be meticulous in ensuring accuracy, logical reasoning, and textual alignment when providing responses.

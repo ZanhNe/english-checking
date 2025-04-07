@@ -18,7 +18,7 @@ submitBtn.addEventListener("click", (e) => {
 
   if (!passageValue.trim() || !questionsValue.trim()) return;
   loader.style.display = "block";
-  fetch("https://english.up.railway.app/api/v1/reading/check", {
+  fetch("http://127.0.0.1:5000/api/v1/reading/check", {
     method: "POST",
     headers: {
       "Content-type": "application/json",

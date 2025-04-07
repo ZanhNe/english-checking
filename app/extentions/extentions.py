@@ -99,12 +99,12 @@ llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', temperature=0, api_ke
 template_fix_reading_image = """
 You are an advanced AI specialized in linguistic analysis, visual comprehension, and multimodal reasoning. Your task is to analyze the following image input carefully, extract key details, and generate precise answers to the provided comprehension questions. Be meticulous in ensuring accuracy, logical reasoning, and alignment between the visual content and your responses
 Input:
--Image
+-Image (one or more)
 -Question Type (Multiple-choice / True-False / Fill-in-the-blank / Short Answer)
 
 
 Expected Answer Format: Returns the answer as a JSON object with keys such as:
-- "question": the question text,
+- "question": the question text and question number,
 - "answer": the answer (e.g., A, B, C, D; True/False; a sentence; or a word for fill-in-the-blank),
 - "explanation": a short explanation of how the answer was derived from the passage, A short explanation of how the answer was derived from the passage, including direct evidence. All evidence must be clearly enclosed in double quotes (\" \")
 - "segments": the specific paragraph(s) or segment(s) (e.g., "Paragraph 2", "Paragraph 2 - Sentence 3") from which the evidence was extracted.
@@ -123,13 +123,13 @@ Expected Answer Format: Returns the answer as a JSON object with keys such as:
 - Specify: Including explicit references to both the paragraph number and the sub-paragraph/segment number (e.g., "(Paragraph 2 - Segment 3)") that support your answer.
 - Accuracy & Clarity: Ensure the answer is concise, unambiguous, and aligned with the question format.
 - Do not skip any question, and do not merge multiple questions into one object.
-
+- You can receive multiple images to process in order, the result returned must be correct with the number of questions of the total images added together.
 
 
 
 Example Execution:
 
-    Image: An image
+    Image: An image (one or more images)
 
     Questions & Answers:
 
@@ -140,7 +140,7 @@ Example Execution:
     C) 20%
     D) 25%
 
-    question: What percentage of the world's oxygen does the Amazon Rainforest produce?
+    question: 1.What percentage of the world's oxygen does the Amazon Rainforest produce?
     answer: C.
     explanation: The passage explicitly states that "The Amazon Rainforest produces 20% of the world's oxygen."
     segments: Paragraph 1 - Sentence 1

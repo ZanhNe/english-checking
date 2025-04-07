@@ -15,9 +15,12 @@ from dotenv import load_dotenv
 import os
 import cloudinary
 import cloudinary.uploader
+from google import genai
 
 
 load_dotenv()
+
+
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
@@ -40,7 +43,10 @@ eleven_client = ElevenLabs(api_key=os.getenv('ELEVENLAB_API_KEY'))
 cors = CORS(resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
 
+client_gemini = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+
 llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', temperature=0, api_key=os.getenv('GEMINI_API_KEY'))
+
 
 # gemini-2.0-flash-exp-image-generation
 
@@ -89,6 +95,101 @@ llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', temperature=0, api_ke
 #     Answer: lungs
 #     Explanation: The passage directly states that the Amazon is referred to as "the lungs of the Earth."
 # """
+
+template_fix_reading_image = """
+You are an advanced AI specialized in linguistic analysis, visual comprehension, and multimodal reasoning. Your task is to analyze the following image input carefully, extract key details, and generate precise answers to the provided comprehension questions. Be meticulous in ensuring accuracy, logical reasoning, and alignment between the visual content and your responses
+Input:
+-Image
+-Question Type (Multiple-choice / True-False / Fill-in-the-blank / Short Answer)
+
+
+Expected Answer Format: Returns the answer as a JSON object with keys such as:
+- "question": the question text,
+- "answer": the answer (e.g., A, B, C, D; True/False; a sentence; or a word for fill-in-the-blank),
+- "explanation": a short explanation of how the answer was derived from the passage, A short explanation of how the answer was derived from the passage, including direct evidence. All evidence must be clearly enclosed in double quotes (\" \")
+- "segments": the specific paragraph(s) or segment(s) (e.g., "Paragraph 2", "Paragraph 2 - Sentence 3") from which the evidence was extracted.
+    for example: "1 He goes to school.
+                  2 She goes to school. He goes to school by car. And he is handsome --> If evidence is "And he is handsome" then segment is "Paragraph 2 - Segment 3" because sentence "And he is handsome" is a sub-paragraph / segment at index 3 of Paragraph 2
+  Do not return a list of segments, just a string with specify paragraph or paragraph - segment if the passage has many parent paragraph and sub-paragraph (segment) inside
+  
+
+  Output Instructions:
+  1. The final output must be a JSON array of objects, with each object corresponding to one question. The number of objects MUST equal the number of questions provided below.
+  2. Ensure that your answers are correct and that your explanations contain explicit, clearly marked evidence from the passage.
+  3. Do not skip any question or merge multiple questions into one object. The output must include exactly [number of questions] objects in the array.
+- Comprehensive Analysis: Break down the passage into key themes, main ideas, and supporting details.
+- Evidence-based Answering: Each answer must be strictly based on the passage. Do not rely on external knowledge.
+- Explain Your Reasoning: For each answer, provide a short explanation of how the answer was derived from the passage.
+- Specify: Including explicit references to both the paragraph number and the sub-paragraph/segment number (e.g., "(Paragraph 2 - Segment 3)") that support your answer.
+- Accuracy & Clarity: Ensure the answer is concise, unambiguous, and aligned with the question format.
+- Do not skip any question, and do not merge multiple questions into one object.
+
+
+
+
+Example Execution:
+
+    Image: An image
+
+    Questions & Answers:
+
+    Q1: What percentage of the world's oxygen does the Amazon Rainforest produce?
+
+    A) 10%
+    B) 15%
+    C) 20%
+    D) 25%
+
+    question: What percentage of the world's oxygen does the Amazon Rainforest produce?
+    answer: C.
+    explanation: The passage explicitly states that "The Amazon Rainforest produces 20% of the world's oxygen."
+    segments: Paragraph 1 - Sentence 1
+
+    question: The Amazon Rainforest has no impact on climate regulation. (True/False)
+    answer: False
+    explanation: The passage mentions that the Amazon "plays a crucial role in regulating global climate patterns," indicating its significant impact on climate regulation.
+    segments: Paragraph 2 - Sentence 1
+    
+    question: The Amazon Rainforest is often called the ‘______ of the Earth.’ 
+    answer: lungs
+    explanation: The passage directly states that the Amazon is referred to as "the lungs of the Earth."
+    segments: Paragraph 1 - Sentence 1
+
+    Reading passage:
+
+    "Tildon Advertising
+    290 West Main, Tildon, PA
+
+    From: Liz Madison, Account Executive
+    To: Mr. Rudy Swenson, Manager, Rudy’s Plumbing Supply
+    Date: March 14
+    Re: Ad Proposal
+
+
+    Dear Mr. Swenson,
+
+    1 Thank you for asking us to design a magazine advertisement for your store. Please find below a description of the ad we are proposing.
+    2 The centerpiece of the ad is a map. Maps are excellent attention-getters. The map will contain all the practical information customers need to find your business: the address, the major roads, and the nearby interstates. Obviously, most of your customers are local, and few of them need the interstate to get to your store. However, we want to show them that your store is so good that a number of customers might also come from far away. In this way, we can stimulate a great deal of demand for your business.
+    3 In addition to including the interstate, we will mention the names of several neighboring towns. You might attract a few customers from other towns, but mainly we will show that your business is popular and known throughout the region.
+    4 In our meeting, you asked us to stress the accessibility of your business, and our ad will make customers feel comfortable about visiting you. You told us you were concerned that your business is not located in the best part of town. Therefore, we recommend omitting the name of your neighborhood and some road names. The ad will encourage new customers to visit you and judge the quality of your service, not the neighborhood.
+    5 A good impression is also achieved by using strong colors in the ad and drawing your building from an angle that increases its scale. The building will be at the center of the ad, and its prominent position and size will bring in plenty of new business.
+    6 We hope you approve of this proposal. We feel that it tells a truthful and persuasive story about Rudy’s Plumbing Supply. Please do not hesitate to contact me if you have any questions."
+
+    Question:
+    1. Write the purpose or main idea of each paragraph. Use the cluster diagram in Activity B to help you.
+    
+    Paragraph 3:
+    [Blank]
+
+    question: Write the purpose or main idea of Paragraph 3.
+    answer: To explain that mentioning neighboring towns reinforces the perception that the business is popular and well-known regionally.
+    explanation: The paragraph states that including names of neighboring towns, while potentially attracting a few customers, mainly serves to show the businesss popularity and regional recognition.
+    segments: Paragraph 3 - Sentence 2 (You might attract a few customers from other towns, but mainly we will show that your business is popular and known throughout the region.)
+  
+  
+  IMAGE: 
+    """
+
 
 template_fix_reading = """
 You are an advanced AI specialized in linguistic analysis and reading comprehension. Your task is to analyze the following passage carefully, extract key details, and generate precise answers to comprehension questions. Be meticulous in ensuring accuracy, logical reasoning, and textual alignment when providing responses.
@@ -323,7 +424,7 @@ prompt_speaking = ChatPromptTemplate.from_messages([
 class Reading(BaseModel):
     question: str = Field(description='The question of answer key')
     answer: str = Field(description='Answer (A, B, C, D or True/False, or a sentences, or word in the blank, etc.)')
-    explaination: str = Field(description='provide a short explanation of how the answer was derived from the passage.')
+    explanation: str = Field(description='provide a short explanation of how the answer was derived from the passage.')
     segments: str = Field(description='the specific paragraph(s) or segment(s) (e.g., "Paragraph 2", "Segment 2.3") from which the evidence was extracted.')
 
 
@@ -350,6 +451,11 @@ def get_by_session_id(session_id: str) -> BaseChatMessageHistory:
         store[session_id] = InMemoryChatMessageHistory()
     return store[session_id]
 
+config_reading_gemini={
+        'temperature': 0,
+        'response_mime_type': 'application/json',
+        'response_schema': list[Reading],
+}
 
 chain_speaking = RunnableWithMessageHistory(
     prompt_speaking | llm,

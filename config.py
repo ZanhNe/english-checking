@@ -12,7 +12,7 @@ class Config:
     SECRET_KEY = 'sieu_bi_mat_ne'
     
     # SQLALCHEMY_DATABASE_URI = DB_URL
-    # DEBUG = os.getenv('DEBUG', 'False') == 'True'
+    DEBUG = os.getenv('DEBUG', 'False') == 'True'
     SECURITY_PASSWORD_SALT = "english_learning_system"
     # SECURITY_REGISTERABLE = True
     # SECURITY_PASSWORD_HASH = "bcrypt"   # Hashing password, Cần phải install thư viện bcrypt trước 

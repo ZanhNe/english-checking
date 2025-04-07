@@ -9,7 +9,7 @@ submitBtn.addEventListener("click", (e) => {
   const formData = new FormData(form);
   if (!formData.get("file")) return;
   loader.style.display = "block";
-  fetch("https://english.up.railway.app/api/v1/reading/uploads", {
+  fetch("https://englishlearning.up.railway.app/api/v1/reading/uploads", {
     method: "POST",
     body: formData,
   })
@@ -26,6 +26,7 @@ submitBtn.addEventListener("click", (e) => {
                 .replace(`'`, "</mark>")
                 .replace('"', "<mark>")
                 .replace('"', "</mark>")}</p>
+                <p><b>Segment</b>: ${result.segments}</p>
               <br />
               `;
         loader.style.display = "none";

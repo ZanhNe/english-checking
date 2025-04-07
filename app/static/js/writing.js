@@ -27,7 +27,7 @@ checkButton.addEventListener("click", function () {
   feedbackSection.innerHTML = ``;
   const text = writtingOutput.value;
   loader.style.display = "block";
-  fetch("https://english.up.railway.app/api/v1/agent/writing", {
+  fetch("https://englishlearning.up.railway.app/api/v1/agent/writing", {
     method: "POST",
     headers: {
       "Content-type": "application/json",

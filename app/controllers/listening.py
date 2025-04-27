@@ -1,6 +1,6 @@
-from flask import Blueprint, request, render_template, redirect, jsonify
-from flask_security.decorators import auth_required, roles_accepted
-from app.extentions.extentions import eleven_client, chain_reading
+from flask import Blueprint, request, render_template, jsonify
+from app.extentions.extentions import eleven_client
+from app.AI.entry import chain_reading
 from docx import Document
 from pypdf import PdfReader
 

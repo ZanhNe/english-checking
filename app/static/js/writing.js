@@ -27,7 +27,7 @@ checkButton.addEventListener("click", function () {
   feedbackSection.innerHTML = ``;
   const text = writtingOutput.value;
   loader.style.display = "block";
-  fetch("https://english.up.railway.app/api/v1/agent/writing", {
+  fetch("http://127.0.0.1:5000/api/v1/agent/writing", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -84,7 +84,7 @@ checkGeneralBtn.addEventListener("click", (e) => {
   const text = writtingOutput.value;
   loader.style.display = "block";
 
-  fetch("https://english.up.railway.app/api/v1/writing/general-check", {
+  fetch("http://127.0.0.1:5000/api/v1/writing/general-check", {
     method: "POST",
     headers: {
       "Content-type": "application/json",

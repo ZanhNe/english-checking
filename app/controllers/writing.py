@@ -1,10 +1,8 @@
 from flask import Blueprint, request, render_template, Response
-from flask_security.decorators import auth_required, roles_required, roles_accepted
-from app.extentions.extentions import chain_grammar, chain_grammar_general
+from app.AI.entry import chain_grammar, chain_grammar_general
 import json
+
 writing_view = Blueprint('writing_view', __name__)
-
-
 
 @writing_view.route('/hoc-tieng-anh/writing', methods=['GET'])
 def get_writing_page():

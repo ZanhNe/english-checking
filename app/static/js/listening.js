@@ -8,7 +8,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(form);
   loader.style.display = "block";
-  fetch("https://english.up.railway.app/api/v1/listening/check", {
+  fetch("http://127.0.0.1:5000/api/v1/listening/check", {
     method: "POST",
     body: formData,
   })

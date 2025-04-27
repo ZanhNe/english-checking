@@ -1,6 +1,8 @@
-from flask import Blueprint, request, render_template, redirect, session, jsonify
-from flask_security import auth_required, roles_required
-from app.extentions.extentions import chain_reading, client_gemini, config_reading_gemini, template_fix_reading_image, Reading
+from flask import Blueprint, request, render_template, jsonify
+from app.AI.prompt_template import template_fix_reading_image
+from app.AI.entry import chain_reading, client_gemini
+from app.AI.base_structure import config_reading_gemini
+from app.AI.base_structure import Reading
 from docx import Document
 from pypdf import PdfReader
 from PIL import Image
